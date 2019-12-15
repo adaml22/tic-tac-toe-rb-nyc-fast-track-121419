@@ -99,7 +99,7 @@ end
 # Define your play method below\
 
 def play(board)
-  if !over?(board) == false
+  if over?(board) == false
     turn(board)
   elsif won?(board)
     puts "Congratulations #{winner}!"
