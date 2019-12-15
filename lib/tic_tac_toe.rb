@@ -99,7 +99,7 @@ end
 # Define your play method below\
 
 def play(board)
-  if !won?(board) && !draw?(board)
+  if !over?(board) == false
     turn(board)
   elsif won?(board)
     if winner(board) == "X"
