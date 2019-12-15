@@ -99,10 +99,16 @@ end
 # Define your play method below\
 
 def play(board)
-  counter = 1
-  while counter < 10
+  if !won?(board) && !draw?(board)
     turn(board)
-    counter += 1
+  elsif won?(board)
+    if winner(board) == "X"
+      return "Congratulations Player X!"
+    else
+      return "Congratulations Player O!"
+    end
+  else
+    return "The game is a draw."
   end
 end
 
