@@ -102,13 +102,9 @@ def play(board)
   if !over?(board) == false
     turn(board)
   elsif won?(board)
-    if winner(board) == "X"
-      return "Congratulations Player X!"
-    else
-      return "Congratulations Player O!"
-    end
+    puts "Congratulations #{winner}!"
   else
-    return "The game is a draw."
+    return "Cat's Game!"
   end
 end
 
