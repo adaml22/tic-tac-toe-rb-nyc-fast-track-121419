@@ -9,7 +9,7 @@ WIN_COMBINATIONS = [
   [6,4,2],
 ]
 
-def won?(board)
+def won?
   WIN_COMBINATIONS.each { |win_combination|
     index_0 = win_combination[0]
     index_1 = win_combination[1]
@@ -26,29 +26,29 @@ def won?(board)
   return false
 end
 
-def full?(board)
+def full?
   board.all? {|index| index == "X" || index == "O"}
 end
 
-def draw?(board)
-  if !won?(board) && full?(board)
+def draw?
+  if !won? && full?
     return true
   else
     return false
   end
 end
 
-def over?(board)
-  if won?(board) || draw?(board)
+def over?
+  if won? || draw?
     return true
   else
     return false
   end
 end
 
-def winner(board)
+def winner
   index = []
-  index = won?(board)
+  index = won?
   if index == false
     return nil
   else
@@ -60,7 +60,7 @@ def winner(board)
   end
 end
 
-def display_board(board)
+def display_board
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
   puts " #{board[3]} | #{board[4]} | #{board[5]} "
@@ -72,15 +72,15 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index, current_player)
+def move(index, current_player)
   board[index] = current_player
 end
 
-def position_taken?(board, location)
+def position_taken?(location)
   board[location] != " " && board[location] != ""
 end
 
-def valid_move?(board, index)
+def valid_move?(index)
   index.between?(0,8) && !position_taken?(board, index)
 end
 
@@ -98,17 +98,17 @@ end
 
 # Define your play method below\
 
-def play(board)
-  if !over?(board)
-    turn(board)
-  elsif won?(board)
+def play
+  if !over?
+    turn
+  elsif won?
     puts "Congratulations #{winner}!"
   else
     return "Cat's Game!"
   end
 end
 
-def turn_count(board)
+def turn_count
   turns = 0
   board.each do |space|
     if space == "X" || if space == "O"
@@ -118,8 +118,8 @@ def turn_count(board)
   return turns
 end
 
-def current_player(board)
-  turns = turn_count(board)
+def current_player
+  turns = turn_count
   if turns % 2 == 0
     return "X"
   else
